@@ -3,3 +3,4 @@ A would-be graduate tries to learn how to write fast kernels
 
 - Day 1: naive CUDA matmul, verified correct vs torch (max err 1.5e-5) on T4
 - Day 2: tiled CUDA matmul, verified and compared between naive and tiled (342.1 to 782.1 GFLOP/s on T4)
+- Day 3: usae NCU to profile tiled matrix multiplications. Bottleneck is L1/shared at 96%, DRAM only 22% (tiling works)
