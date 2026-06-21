@@ -1,0 +1,58 @@
+==PROF== Connected to process 5856 (/home/bensonling/miniconda3/envs/kernel_learning/bin/python3.11)
+ninja: no work to do.
+==PROF== Profiling "matmul_tiled": 0%....50%....100% - 9 passes
+==PROF== Disconnected from process 5856
+[5856] python3.11@127.0.0.1
+  matmul_tiled(const float *, const float *, float *, int, int, int) (64, 64, 1)x(16, 16, 1), Context 1, Stream 7, Device 0, CC 8.6
+    Section: GPU Speed Of Light Throughput
+    ----------------------- ------------- ------------
+    Metric Name               Metric Unit Metric Value
+    ----------------------- ------------- ------------
+    DRAM Frequency          cycle/nsecond         7.00
+    SM Frequency            cycle/usecond       900.18
+    Elapsed Cycles                  cycle     346,2373
+    Memory Throughput                   %        97.10
+    DRAM Throughput                     %        21.83
+    Duration                      msecond         3.85
+    L1/TEX Cache Throughput             %        96.48
+    L2 Cache Throughput                 %        18.02
+    SM Active Cycles                cycle  348,4625.73
+    Compute (SM) Throughput             %        97.10
+    ----------------------- ------------- ------------
+
+    INF   The kernel is utilizing greater than 80.0% of the available compute or memory performance of the device. To   
+          further improve performance, work will likely need to be shifted from the most utilized to another unit.      
+          Start by analyzing workloads in the Compute Workload Analysis section.                                        
+
+    Section: Launch Statistics
+    -------------------------------- --------------- ---------------
+    Metric Name                          Metric Unit    Metric Value
+    -------------------------------- --------------- ---------------
+    Block Size                                                   256
+    Function Cache Configuration                     CachePreferNone
+    Grid Size                                                   4096
+    Registers Per Thread             register/thread              35
+    Shared Memory Configuration Size           Kbyte           32.77
+    Driver Shared Memory Per Block       Kbyte/block            1.02
+    Dynamic Shared Memory Per Block       byte/block               0
+    Static Shared Memory Per Block       Kbyte/block            2.05
+    Threads                                   thread        104,8576
+    Waves Per SM                                               22.76
+    -------------------------------- --------------- ---------------
+
+    Section: Occupancy
+    ------------------------------- ----------- ------------
+    Metric Name                     Metric Unit Metric Value
+    ------------------------------- ----------- ------------
+    Block Limit SM                        block           16
+    Block Limit Registers                 block            6
+    Block Limit Shared Mem                block           10
+    Block Limit Warps                     block            6
+    Theoretical Active Warps per SM        warp           48
+    Theoretical Occupancy                     %          100
+    Achieved Occupancy                        %        97.21
+    Achieved Active Warps Per SM           warp        46.66
+    ------------------------------- ----------- ------------
+
+    INF   This kernel's theoretical occupancy is not impacted by any block limit.                                       
+
