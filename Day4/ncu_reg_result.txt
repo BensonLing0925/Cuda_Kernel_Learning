@@ -1,0 +1,60 @@
+==PROF== Connected to process 7192 (/home/bensonling/miniconda3/envs/kernel_learning/bin/python3.11)
+ninja: no work to do.
+==PROF== Profiling "matmul_reg": 0%....50%....100% - 9 passes
+max error: 0.00020599365234375
+==PROF== Disconnected from process 7192
+[7192] python3.11@127.0.0.1
+  matmul_reg(const float *, const float *, float *, int, int, int) (16, 16, 1)x(512, 1, 1), Context 1, Stream 7, Device 0, CC 8.6
+    Section: GPU Speed Of Light Throughput
+    ----------------------- ------------- ------------
+    Metric Name               Metric Unit Metric Value
+    ----------------------- ------------- ------------
+    DRAM Frequency          cycle/nsecond         6.99
+    SM Frequency            cycle/usecond       898.89
+    Elapsed Cycles                  cycle     122,6658
+    Memory Throughput                   %        79.98
+    DRAM Throughput                     %         9.48
+    Duration                      msecond         1.36
+    L1/TEX Cache Throughput             %        80.86
+    L2 Cache Throughput                 %        15.02
+    SM Active Cycles                cycle  121,3320.47
+    Compute (SM) Throughput             %        79.98
+    ----------------------- ------------- ------------
+
+    INF   Compute and Memory are well-balanced: To reduce runtime, both computation and memory traffic must be reduced. 
+          Check both the Compute Workload Analysis and Memory Workload Analysis sections.                               
+
+    Section: Launch Statistics
+    -------------------------------- --------------- ---------------
+    Metric Name                          Metric Unit    Metric Value
+    -------------------------------- --------------- ---------------
+    Block Size                                                   512
+    Function Cache Configuration                     CachePreferNone
+    Grid Size                                                    256
+    Registers Per Thread             register/thread              44
+    Shared Memory Configuration Size           Kbyte           16.38
+    Driver Shared Memory Per Block       Kbyte/block            1.02
+    Dynamic Shared Memory Per Block       byte/block               0
+    Static Shared Memory Per Block       Kbyte/block            4.10
+    Threads                                   thread         13,1072
+    Waves Per SM                                                4.27
+    -------------------------------- --------------- ---------------
+
+    Section: Occupancy
+    ------------------------------- ----------- ------------
+    Metric Name                     Metric Unit Metric Value
+    ------------------------------- ----------- ------------
+    Block Limit SM                        block           16
+    Block Limit Registers                 block            2
+    Block Limit Shared Mem                block            3
+    Block Limit Warps                     block            3
+    Theoretical Active Warps per SM        warp           32
+    Theoretical Occupancy                     %        66.67
+    Achieved Occupancy                        %        60.84
+    Achieved Active Warps Per SM           warp        29.20
+    ------------------------------- ----------- ------------
+
+    OPT   This kernel's theoretical occupancy (66.7%) is limited by the number of required registers. See the CUDA Best 
+          Practices Guide (https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/index.html#occupancy) for more      
+          details on optimizing occupancy.                                                                              
+
