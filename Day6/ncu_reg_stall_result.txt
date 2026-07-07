@@ -1,0 +1,18 @@
+==PROF== Connected to process 7590 (/home/bensonling/miniconda3/envs/kernel_learning/bin/python3.11)
+[1/2] /home/bensonling/miniconda3/envs/kernel_learning/bin/nvcc --generate-dependencies-with-compile --dependency-output cuda.cuda.o.d -DTORCH_EXTENSION_NAME=matmul_reg -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1011\" -isystem /home/bensonling/miniconda3/envs/kernel_learning/lib/python3.11/site-packages/torch/include -isystem /home/bensonling/miniconda3/envs/kernel_learning/lib/python3.11/site-packages/torch/include/torch/csrc/api/include -isystem /home/bensonling/miniconda3/envs/kernel_learning/lib/python3.11/site-packages/torch/include/TH -isystem /home/bensonling/miniconda3/envs/kernel_learning/lib/python3.11/site-packages/torch/include/THC -isystem /home/bensonling/miniconda3/envs/kernel_learning/include -isystem /home/bensonling/miniconda3/envs/kernel_learning/include/python3.11 -D_GLIBCXX_USE_CXX11_ABI=0 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_86,code=sm_86 --compiler-options '-fPIC' -arch=sm_86 -std=c++17 -c /home/bensonling/.cache/torch_extensions/py311_cu121/matmul_reg/cuda.cu -o cuda.cuda.o 
+[2/2] c++ main.o cuda.cuda.o -shared -L/home/bensonling/miniconda3/envs/kernel_learning/lib/python3.11/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/home/bensonling/miniconda3/envs/kernel_learning/lib -lcudart -o matmul_reg.so
+==PROF== Profiling "matmul_reg": 0%....50%....100% - 3 passes
+max error: 0.00020599365234375
+==PROF== Disconnected from process 7590
+[7590] python3.11@127.0.0.1
+  matmul_reg(const float *, const float *, float *, int, int, int) (16, 16, 1)x(512, 1, 1), Context 1, Stream 7, Device 0, CC 8.6
+    Section: Command line profiler metrics
+    ------------------------------------------------------------- ----------- ------------
+    Metric Name                                                   Metric Unit Metric Value
+    ------------------------------------------------------------- ----------- ------------
+    smsp__warp_issue_stalled_barrier_per_warp_active.pct                    %         9.56
+    smsp__warp_issue_stalled_lg_throttle_per_warp_active.pct                %         0.18
+    smsp__warp_issue_stalled_long_scoreboard_per_warp_active.pct            %        20.02
+    smsp__warp_issue_stalled_short_scoreboard_per_warp_active.pct           %         9.25
+    ------------------------------------------------------------- ----------- ------------
+

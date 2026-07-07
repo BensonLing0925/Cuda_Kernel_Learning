@@ -1,0 +1,14 @@
+==PROF== Connected to process 13654 (/home/bensonling/miniconda3/envs/kernel_learning/bin/python3.11)
+ninja: no work to do.
+==PROF== Profiling "matmul_reg": 0%....50%....100% - 1 pass
+max error: 0.00022125244140625
+==PROF== Disconnected from process 13654
+[13654] python3.11@127.0.0.1
+  matmul_reg(const float *, const float *, float *, int, int, int) (16, 16, 1)x(512, 1, 1), Context 1, Stream 7, Device 0, CC 8.6
+    Section: Command line profiler metrics
+    -------------------------------------------------- ----------- ------------
+    Metric Name                                        Metric Unit Metric Value
+    -------------------------------------------------- ----------- ------------
+    smsp__thread_inst_executed_per_inst_executed.ratio                       32
+    -------------------------------------------------- ----------- ------------
+
