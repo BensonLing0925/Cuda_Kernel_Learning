@@ -4,20 +4,20 @@
 Change the A/B load into float4 read operations
 
 ## Process
-1. Using (innerCol % 4 == 0) to filter threads to load
+1. Using (innerCol % 4 == 0) to filter threads to load<br>
    Result: Max error close to 0 but execution became slower (from 1.36ms to 1.69ms)
-2. Assumed warp divergence caused the slow down
-   Validate: smsp__thread_inst_executed_per_inst_executed.ratio
+2. Assumed warp divergence caused the slow down<br>
+   Validate: smsp__thread_inst_executed_per_inst_executed.ratio<br>
    Comparison: Day4 has no warp divergence (32), Day5 has divergence (27.04)
-3. Used (threadIdx.x < 128) to let the first 128 threads do the loading
+3. Used (threadIdx.x < 128) to let the first 128 threads do the loading<br>
    Result: Warp divergence solved, but overall execution time is still slower than Day4 (1.45ms)
-4. New hypothesis: memory latency not being hidden
-   Validate: long_scoreboard metric
+4. New hypothesis: memory latency not being hidden<br>
+   Validate: long_scoreboard metric<br>
    Result: Day5 has lower global memory latency stall than Day4 (6.27% vs 18.93%) -> hypothesis rejected
-5. Barrier stall
-   Comparison: Day4: 9.42%, Day5: 30.91%
-   Reason: 128 threads have to do 4x the work compared to the original 512-thread design.
-   The remaining 384 threads finish early and wait idle at __syncthreads(),
+5. Barrier stall<br>
+   Comparison: Day4: 9.42%, Day5: 30.91%<br>
+   Reason: 128 threads have to do 4x the work compared to the original 512-thread design.<br>
+   The remaining 384 threads finish early and wait idle at __syncthreads(),<br>
    while the 128 loading threads take longer in absolute time despite float4's per-byte efficiency gain.
 
 ## Conclusion
